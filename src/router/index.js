@@ -1,15 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
+
+function _ (name) {
+  return () => System.import(`@/pages/${name}.vue`)
+}
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: _('Home/Index')
+    },
+    {
+      path: '/posts',
+      name: 'Posts',
+      component: _('Posts/Index')
     }
   ]
 })
